@@ -42,7 +42,7 @@ struct Marker<R: RootRegistry>: MapContent {
     
     /// Use the value as a monogram instead of the default pin icon.
     @_documentation(visibility: public)
-    let monogram: String?
+    let monogram: Text?
     
     /// Use the provided image resource instead of the default pin icon.
     @_documentation(visibility: public)
