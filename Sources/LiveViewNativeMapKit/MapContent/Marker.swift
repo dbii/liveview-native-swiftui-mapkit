@@ -59,7 +59,7 @@ struct Marker<R: RootRegistry>: MapContent {
         self.latitude = try element.attributeValue(Double.self, for: "latitude")
         self.longitude = try element.attributeValue(Double.self, for: "longitude")
         
-        self.monogram = element.attributeValue(for: "monogram")
+        self.monogram = try element.attributeValue(Text.self, for: "monogram")
         
         self.image = element.attributeValue(for: "image")
         self.systemImage = element.attributeValue(for: "system-image")
