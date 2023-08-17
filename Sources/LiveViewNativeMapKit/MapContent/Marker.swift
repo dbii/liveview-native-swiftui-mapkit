@@ -42,7 +42,7 @@ struct Marker<R: RootRegistry>: MapContent {
     
     /// Use the value as a monogram instead of the default pin icon.
     @_documentation(visibility: public)
-    let monogram: Text?
+    let monogram: String?
     
     /// Use the provided image resource instead of the default pin icon.
     @_documentation(visibility: public)
@@ -59,7 +59,7 @@ struct Marker<R: RootRegistry>: MapContent {
         self.latitude = try element.attributeValue(Double.self, for: "latitude")
         self.longitude = try element.attributeValue(Double.self, for: "longitude")
         
-        self.monogram = try element.attributeValue(Text.self, for: "monogram")
+        self.monogram = try element.attributeValue(for: "monogram")
         
         self.image = element.attributeValue(for: "image")
         self.systemImage = element.attributeValue(for: "system-image")
@@ -84,7 +84,7 @@ struct Marker<R: RootRegistry>: MapContent {
     @MapKit.MapContentBuilder
     var body: some MapContent {
         if let monogram {
-            MapKit.Marker(title, monogram: monogram, coordinate: coordinate)
+            MapKit.Marker(title, monogram: Text(monogram), coordinate: coordinate)
         } else if let image {
             MapKit.Marker(title, image: image, coordinate: coordinate)
         } else if let systemImage {
